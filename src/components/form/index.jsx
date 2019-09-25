@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 const Spacer = styled.div`
-  height: 10px;
+  height: 20px;
 `;
 
 class Form extends Component {
@@ -25,7 +25,8 @@ class Form extends Component {
       2: { time: "", category: 0 }
     },
     pickups: "",
-    notifications: ""
+    notifications: "",
+    error: ""
   };
 
   handleSelect = (id, value) => {
@@ -58,17 +59,21 @@ class Form extends Component {
     const { categories, pickups, notifications } = this.state;
     const { onSubmit } = this.props;
     if (
-      Object.values(categories).every(({ time }) => timeValidate(time)) &&
+      Object.values(categories).every(
+        ({ time, category }) => timeValidate(time) && category
+      ) &&
       numberValidate(pickups) &&
       numberValidate(notifications)
     ) {
-      console.log("time to submit", categories, pickups, notifications);
+      this.setState({ error: "" });
       onSubmit({ categories, pickups, notifications });
+    } else {
+      this.setState({ error: "please correct form errors" });
     }
   };
 
   render() {
-    const { categories, pickups, notifications } = this.state;
+    const { categories, pickups, notifications, error } = this.state;
 
     return (
       <Container>
@@ -84,18 +89,18 @@ class Form extends Component {
         <Spacer />
         <NumberInput
           value={pickups}
-          label={"pickups"}
+          label={"pickups/day"}
           onChange={this.handleChangePickups}
           placeholder={0}
         />
         <Spacer />
         <NumberInput
           value={notifications}
-          label={"notifications"}
+          label={"notifications/day"}
           onChange={this.handleChangeNotifications}
           placeholder={0}
         />
-        <SubmitButton onClick={this.handleSubmit} />
+        <SubmitButton onClick={this.handleSubmit} error={error} />
       </Container>
     );
   }

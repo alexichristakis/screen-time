@@ -2,16 +2,21 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
+  position: absolute;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  left: 213px;
   margin-top: 50px;
 `;
 
 const Button = styled.a`
   background-color: black;
-  margin-left: 50px;
   color: white;
   font-size: 12pt;
   padding: 10px 40px 10px 40px;
   border: solid white 1px;
+  cursor: pointer;
   &:hover {
     color: rgb(130, 130, 130);
     border-color: rgb(130, 130, 130);
@@ -23,20 +28,14 @@ const Button = styled.a`
   }
 `;
 
-const Label = styled.label``;
-
 const Error = styled.p`
-  position: absolute;
-  margin-top: 2px;
   font-size: 8pt;
   color: red;
 `;
 
 const SubmitButton = ({ onClick, error }) => (
   <Container>
-    <Button onClick={onClick}>
-      <Label>generate</Label>
-    </Button>
+    <Button onClick={onClick}>generate</Button>
     {error !== "" && <Error>{error}</Error>}
   </Container>
 );

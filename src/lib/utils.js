@@ -9,7 +9,7 @@ export const numberValidate = value => {
   const re = /\s*[0-9]*\s*/;
   const match = value.match(re);
 
-  return match && value === match[0];
+  return match && value === match[0] && match[0] > 0;
 };
 
 export const timeStringToInt = time => {};

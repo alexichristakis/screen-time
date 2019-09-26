@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import Visualization from "./components/visualization";
+import P5 from "react-p5-wrapper";
+
 import Form from "./components/form";
+import sketch from "./components/visualization";
 
 class App extends Component {
   state = {
@@ -40,10 +42,29 @@ class App extends Component {
     } = this.state;
 
     return (
-      <div className="App">
-        <Form onSubmit={this.handleSubmit} />
-        <Visualization data={data} width={width} height={height} />
-      </div>
+      <>
+        {/* <button
+          onClick={() => {
+            console.log("pressed");
+            this.setState({
+              data: {
+                social: 105,
+                productivity: 200,
+                reading: 135,
+                pickups: 100,
+                notifications: 400
+              }
+            });
+          }}
+        >
+          hello
+        </button> */}
+        <div className="App">
+          <Form onSubmit={this.handleSubmit} />
+
+          <P5 width={width} height={height} data={data} sketch={sketch} />
+        </div>
+      </>
     );
   }
 }

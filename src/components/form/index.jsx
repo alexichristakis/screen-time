@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import { timeValidate, numberValidate } from "../../lib/utils";
+import { timeValidate, numberValidate, timeStringToInt } from "../../lib/utils";
 
 import SubmitButton from "./SubmitButton";
 import NumberInput from "./NumberInput";
@@ -58,6 +58,7 @@ class Form extends Component {
   handleSubmit = () => {
     const { categories, pickups, notifications } = this.state;
     const { onSubmit } = this.props;
+
     if (
       Object.values(categories).every(
         ({ time, category }) => timeValidate(time) && category
@@ -66,7 +67,19 @@ class Form extends Component {
       numberValidate(notifications)
     ) {
       this.setState({ error: "" });
-      onSubmit({ categories, pickups, notifications });
+
+      const data = {
+        pickups,
+        notifications
+      };
+
+      Object.keys(categories).forEach(key => {
+        data[categories[key].category.value] = timeStringToInt(
+          categories[key].time
+        );
+      });
+
+      onSubmit(data);
     } else {
       this.setState({ error: "please correct form errors" });
     }

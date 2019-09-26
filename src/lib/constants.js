@@ -5,7 +5,9 @@ export const colors = {
   magenta: "#B620E0",
   green: "#49E020",
   purple: "#4532FF",
-  yellow: "#E0C620"
+  yellow: "#E0C620",
+  red: "#E02020",
+  grayBlue: "#72B8FF"
 };
 
 export const options = [
@@ -25,5 +27,7 @@ export const categoryToColor = {
   games: colors.darkblue,
   entertainment: colors.yellow,
   creativity: colors.purple,
-  education: colors.green
+  education: colors.green,
+  notifications: colors.red,
+  pickups: colors.grayBlue
 };

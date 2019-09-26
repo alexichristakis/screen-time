@@ -23,6 +23,9 @@ const Input = styled.input`
   margin-right: 20px;
   padding-left: 5px;
   font-size: 12pt;
+  &:hover {
+    border-color: rgb(130, 130, 130);
+  }
 `;
 
 const Label = styled.div`

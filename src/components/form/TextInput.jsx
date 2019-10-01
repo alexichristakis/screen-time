@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -41,14 +41,39 @@ const Error = styled.p`
   color: red;
 `;
 
-const TextInput = ({ placeholder, label, error, value, onChange }) => (
-  <Container>
-    <ErrorContainer>
-      <Input placeholder={placeholder} value={value} onChange={onChange} />
-      {error !== "" && <Error>{error}</Error>}
-    </ErrorContainer>
-    {label && <Label>{label}</Label>}
-  </Container>
-);
+const TextInput = ({
+  placeholder,
+  label,
+  errorString,
+  value,
+  onChange,
+  validation
+}) => {
+  const [error, setError] = useState("");
+
+  const handleOnChange = ({ target: { value } }) => {
+    onChange(value);
+    if (validation(value)) {
+      onChange(value);
+      setError("");
+    } else {
+      setError(errorString);
+    }
+  };
+
+  return (
+    <Container>
+      <ErrorContainer>
+        <Input
+          placeholder={placeholder}
+          value={value}
+          onChange={handleOnChange}
+        />
+        {error !== "" && <Error>{error}</Error>}
+      </ErrorContainer>
+      {label && <Label>{label}</Label>}
+    </Container>
+  );
+};
 
 export default TextInput;

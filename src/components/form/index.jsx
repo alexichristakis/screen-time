@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { timeValidate, numberValidate, timeStringToInt } from "../../lib/utils";
 
 import SubmitButton from "./SubmitButton";
-import NumberInput from "./NumberInput";
+import TextInput from "./TextInput";
 import Category from "./Category";
 
 const Container = styled.div`
@@ -20,9 +20,9 @@ const Spacer = styled.div`
 class Form extends Component {
   state = {
     categories: {
-      0: { time: "", category: 0 },
-      1: { time: "", category: 0 },
-      2: { time: "", category: 0 }
+      0: { time: "", category: "" },
+      1: { time: "", category: "" },
+      2: { time: "", category: "" }
     },
     pickups: "",
     notifications: "",
@@ -70,11 +70,12 @@ class Form extends Component {
 
       const data = {
         pickups,
-        notifications
+        notifications,
+        categories: {}
       };
 
       Object.keys(categories).forEach(key => {
-        data[categories[key].category.value] = timeStringToInt(
+        data.categories[categories[key].category.value] = timeStringToInt(
           categories[key].time
         );
       });
@@ -100,18 +101,22 @@ class Form extends Component {
           />
         ))}
         <Spacer />
-        <NumberInput
+        <TextInput
           value={pickups}
           label={"pickups/day"}
+          validation={numberValidate}
+          errorString={"please enter a number"}
           onChange={this.handleChangePickups}
-          placeholder={0}
+          placeholder={"0"}
         />
         <Spacer />
-        <NumberInput
+        <TextInput
           value={notifications}
           label={"notifications/day"}
+          validation={numberValidate}
+          errorString={"please enter a number"}
           onChange={this.handleChangeNotifications}
-          placeholder={0}
+          placeholder={"0"}
         />
         <SubmitButton onClick={this.handleSubmit} error={error} />
       </Container>

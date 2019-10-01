@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "chroma-js": "^2.0.6",
+    "heap-js": "^1.4.1",
     "lodash": "^4.17.15",
     "p5": "^0.9.0",
     "react": "^16.9.0",

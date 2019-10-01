@@ -3,9 +3,10 @@ import chroma from "chroma-js";
 import styled from "styled-components";
 import Select from "react-select";
 
+import { timeValidate } from "../../lib/utils";
 import { colors, categoryToColor, options } from "../../lib/constants";
 
-import TimeEntry from "./TimeEntry";
+import TextInput from "./TextInput";
 
 const box = (color = "#ccc") => ({
   alignItems: "center",
@@ -95,10 +96,12 @@ const Category = ({ id, value, onSelect, onEnterTime }) => {
 
   return (
     <Container>
-      <TimeEntry
-        value={time}
-        onChange={time => onEnterTime(id, time)}
+      <TextInput
         placeholder="0h0m"
+        value={time}
+        validation={timeValidate}
+        errorString={"follow XhYm formatting"}
+        onChange={time => onEnterTime(id, time)}
       />
       <Select
         placeholder={"screen time category"}

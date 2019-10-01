@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import P5 from "react-p5-wrapper";
 
 import Form from "./components/form";
-import sketch from "./components/visualization";
+import sketch from "./components/visualization/MassSimulation";
 
 class App extends Component {
   state = {
@@ -42,29 +42,10 @@ class App extends Component {
     } = this.state;
 
     return (
-      <>
-        {/* <button
-          onClick={() => {
-            console.log("pressed");
-            this.setState({
-              data: {
-                social: 105,
-                productivity: 200,
-                reading: 135,
-                pickups: 100,
-                notifications: 400
-              }
-            });
-          }}
-        >
-          hello
-        </button> */}
-        <div className="App">
-          <Form onSubmit={this.handleSubmit} />
-
-          <P5 width={width} height={height} data={data} sketch={sketch} />
-        </div>
-      </>
+      <div className="App">
+        <Form onSubmit={this.handleSubmit} />
+        <P5 width={width} height={height} data={data} sketch={sketch} />
+      </div>
     );
   }
 }

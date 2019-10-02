@@ -7,6 +7,8 @@ export default p =>
       this.y = y;
       this.r = r;
       this.mass = r / 2000;
+
+      this.animation = 0;
     }
 
     compare = dot2 => {
@@ -23,6 +25,8 @@ export default p =>
     display = () => {
       p.fill(this.color);
       p.stroke(this.color);
-      p.ellipse(this.x, this.y, this.r * 2, this.r * 2);
+      p.ellipse(this.x, this.y, this.animation * 2, this.animation * 2);
+
+      if (this.animation < this.r) this.animation += 0.05;
     };
   };

@@ -8,8 +8,8 @@ export default p => {
 
   return class Session {
     constructor(width, height, notifications, categories) {
-      this.x = Math.random() * width;
-      this.y = Math.random() * height;
+      this.x = p.random(200, width - 200);
+      this.y = p.random(200, height - 200);
 
       this.dots = [new Dot(categoryToColor.pickups, this.x, this.y, 7)];
 
@@ -17,8 +17,8 @@ export default p => {
         this.dots.push(
           new Dot(
             categoryToColor.notifications,
-            Math.random() * width,
-            Math.random() * height,
+            p.random(200, width - 200),
+            p.random(200, height - 200),
             5
           )
         );
@@ -27,14 +27,15 @@ export default p => {
       Object.keys(categories).forEach(category => {
         const size = categories[category];
 
-        this.dots.push(
-          new Dot(
-            categoryToColor[category],
-            Math.random() * width,
-            Math.random() * height,
-            size
-          )
-        );
+        if (size)
+          this.dots.push(
+            new Dot(
+              categoryToColor[category],
+              p.random(200, width - 200),
+              p.random(200, height - 200),
+              size * 3
+            )
+          );
       });
     }
 

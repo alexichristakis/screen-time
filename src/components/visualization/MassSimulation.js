@@ -1,11 +1,13 @@
-import Session from "./Session";
+import _Session from "./Session";
 
 export default p => {
-  const WrappedSession = Session(p);
+  const Session = _Session(p);
+
   p.disableFriendlyErrors = true;
 
   let data = {};
   let sessions = [];
+  let drawnSessions = [];
   let width, height;
 
   p.setup = () => {
@@ -26,62 +28,75 @@ export default p => {
     }
   };
 
+  const shuffle = array => {
+    return array.sort(() => Math.random() - 0.5);
+  };
+
   const distribute = (length, value) => {
     if (length <= 1) return [value];
-    const half = Math.floor(length / 2);
-    const dist = Math.floor(Math.random() * value);
+    if (value <= 5) return [value].concat(distribute(length - 1, 0));
 
-    return distribute(half, dist).concat(
-      distribute(length - half, value - dist)
+    const half = Math.floor(length / 2);
+
+    const dist = Math.min(
+      value,
+      Math.max(
+        value / length,
+        Math.floor(value / 2 + ((Math.random() - 0.5) * value) / length)
+      )
+    );
+
+    return shuffle(
+      distribute(half, dist).concat(distribute(length - half, value - dist))
     );
   };
 
-  const generatePickupCategories = () => {};
+  const updateDrawnSessions = () => {
+    drawnSessions.push(sessions.pop());
+  };
 
   const processData = ({ pickups, notifications, categories }) => {
     sessions = [];
 
-    // const pickups = 165;
-    // const social = 85 * 15;
-    // const entertainment = 90 * 15;
-    // const reading = 45 * 15;
+    // pickups = 100;
+    // notifications = 100;
+    // categories = {
+    //   social: 65,
+    //   entertainment: 65,
+    //   productivity: 65
+    // };
 
-    // const notifications = distribute(pickups, 400);
-    // console.log(notifications);
-    // const cat1 = distribute(pickups, social);
-    // const cat2 = distribute(pickups, entertainment);
-    // const cat3 = distribute(pickups, reading);
-    // console.log(cat1);
-
-    for (let i = 0; i < pickups; i++) {
-      const session = {};
+    if (pickups) {
+      const distributed = {};
       Object.keys(categories).map(
-        category => (session[category] = categories[category] / pickups)
+        category =>
+          (distributed[category] = distribute(pickups, categories[category]))
       );
 
-      // console.log(session);
+      for (let i = 0; i < pickups; i++) {
+        const formatted = {};
+        Object.keys(categories).map(
+          category => (formatted[category] = distributed[category][i])
+        );
 
-      sessions.push(
-        new WrappedSession(width, height, notifications / pickups, session)
-      );
+        sessions.push(
+          new Session(width, height, notifications / pickups, formatted)
+        );
+      }
     }
   };
 
   p.draw = () => {
     p.background(0);
 
-    // if (!(p.frameCount % 100)) {
-    //   updateDrawnDots(dots, drawnDots);
-    // }
-
-    let fps = p.frameRate();
-    p.fill(255);
-    p.stroke(0);
-    p.text("FPS: " + fps.toFixed(2), width - 100, height - 100);
+    if (!(p.frameCount % 30) && sessions.length) {
+      updateDrawnSessions();
+    }
 
     // drawDots(dots);
-    sessions.forEach(session => {
-      session.display();
-    });
+    if (drawnSessions.length)
+      drawnSessions.forEach(session => {
+        session.display();
+      });
   };
 };

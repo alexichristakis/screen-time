@@ -1,5 +1,3 @@
-import Heap from "heap-js";
-
 import _Dot from "./Dot";
 import { categoryToColor } from "../../lib/constants";
 

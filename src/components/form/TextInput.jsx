@@ -15,7 +15,7 @@ const Input = styled.input`
   height: 100%;
   min-height: 38px;
   box-sizing: border-box;
-  background-color: black;
+  background-color: transparent;
   color: white;
   border-width: 0px;
   border-bottom: solid white 1px;

@@ -58,13 +58,13 @@ export default p => {
   const processData = ({ pickups, notifications, categories }) => {
     sessions = [];
 
-    // pickups = 100;
-    // notifications = 100;
-    // categories = {
-    //   social: 65,
-    //   entertainment: 65,
-    //   productivity: 65
-    // };
+    pickups = 100;
+    notifications = 100;
+    categories = {
+      social: 65,
+      entertainment: 65,
+      productivity: 65
+    };
 
     if (pickups) {
       const distributed = {};
@@ -93,7 +93,6 @@ export default p => {
       updateDrawnSessions();
     }
 
-    // drawDots(dots);
     if (drawnSessions.length)
       drawnSessions.forEach(session => {
         session.display();

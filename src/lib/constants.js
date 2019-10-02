@@ -1,13 +1,14 @@
 export const colors = {
   orange: "#FA6400",
-  lightblue: "#32C5FF",
-  darkblue: "#002AFF",
-  magenta: "#B620E0",
+  lightblue: "#64D2FF",
+  darkblue: "#007FFF",
+  magenta: "#FB00FF",
   green: "#49E020",
-  purple: "#4532FF",
-  yellow: "#E0C620",
+  purple: "#5E5CE6",
+  yellow: "#FFD60A",
   red: "#E02020",
-  grayBlue: "#72B8FF"
+  grayBlue: "#C6E2FF",
+  pink: "#FF6FA6"
 };
 
 export const options = [
@@ -17,17 +18,19 @@ export const options = [
   { value: "reading", label: "reading & reference" },
   { value: "creativity", label: "creativity & arts" },
   { value: "games", label: "games" },
-  { value: "education", label: "education" }
+  { value: "education", label: "education" },
+  { value: "health", label: "health & fitness" }
 ];
 
 export const categoryToColor = {
-  social: colors.orange,
-  productivity: colors.lightblue,
-  reading: colors.magenta,
-  games: colors.darkblue,
+  social: colors.darkblue,
+  productivity: colors.orange,
+  reading: colors.grayBlue,
+  games: colors.magenta,
   entertainment: colors.yellow,
   creativity: colors.purple,
   education: colors.green,
   notifications: colors.red,
-  pickups: colors.grayBlue
+  health: colors.pink,
+  pickups: colors.lightblue
 };

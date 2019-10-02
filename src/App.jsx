@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import P5 from "react-p5-wrapper";
 
 import Form from "./components/form";
-import sketch from "./components/visualization/MassSimulation";
+import sketch from "./components/visualization";
+import Help from "./components/help";
 
 class App extends Component {
   state = {
@@ -45,6 +46,7 @@ class App extends Component {
       <div className="App">
         <Form onSubmit={this.handleSubmit} />
         <P5 width={width} height={height} data={data} sketch={sketch} />
+        <Help />
       </div>
     );
   }

@@ -13,8 +13,18 @@ const Container = styled.div`
   width: 50%;
 `;
 
+const TextContainer = styled.div`
+  width: 50vw;
+  max-width: 500px;
+`;
+
 const Spacer = styled.div`
   height: 20px;
+`;
+
+const Label = styled.div`
+  margin-top: 20px;
+  color: white;
 `;
 
 class Form extends Component {

@@ -2,18 +2,21 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  position: absolute;
-  align-items: center;
+  /* position: absolute; */
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  left: 213px;
+  /* left: 213px; */
   margin-top: 50px;
+  width: 50vw;
+  max-width: 500px;
 `;
 
 const Button = styled.a`
   background-color: black;
   color: white;
   font-size: 12pt;
+  margin-left: 50%;
   padding: 10px 40px 10px 40px;
   border: solid white 1px;
   cursor: pointer;

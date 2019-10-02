@@ -89,6 +89,7 @@ const Container = styled.div`
   max-width: 500px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 `;
 
 const Category = ({ id, value, onSelect, onEnterTime }) => {

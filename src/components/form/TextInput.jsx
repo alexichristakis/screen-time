@@ -3,16 +3,21 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
+  width: 50vw;
+  max-width: 500px;
   flex-direction: row;
 `;
 
-const ErrorContainer = styled.div`
+const InputContainer = styled.div`
   flex-direction: column;
+  display: flex;
   height: 100%;
+  width: calc(50% - 30px);
 `;
 
 const Input = styled.input`
   height: 100%;
+  width: 100%;
   min-height: 38px;
   box-sizing: border-box;
   background-color: transparent;
@@ -20,7 +25,6 @@ const Input = styled.input`
   border-width: 0px;
   border-bottom: solid white 1px;
   outline: none;
-  margin-right: 20px;
   padding-left: 5px;
   font-size: 12pt;
   &:hover {
@@ -30,6 +34,7 @@ const Input = styled.input`
 
 const Label = styled.div`
   margin-top: 20px;
+  margin-left: 30px;
   color: white;
 `;
 
@@ -61,19 +66,25 @@ const TextInput = ({
     }
   };
 
-  return (
-    <Container>
-      <ErrorContainer>
-        <Input
-          placeholder={placeholder}
-          value={value}
-          onChange={handleOnChange}
-        />
-        {error !== "" && <Error>{error}</Error>}
-      </ErrorContainer>
-      {label && <Label>{label}</Label>}
-    </Container>
+  const Field = (
+    <InputContainer>
+      <Input
+        placeholder={placeholder}
+        value={value}
+        onChange={handleOnChange}
+      />
+      {error !== "" && <Error>{error}</Error>}
+    </InputContainer>
   );
+
+  if (label)
+    return (
+      <Container>
+        {Field}
+        {label && <Label>{label}</Label>}
+      </Container>
+    );
+  else return Field;
 };
 
 export default TextInput;

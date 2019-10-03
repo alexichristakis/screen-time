@@ -40,7 +40,7 @@ const Label = styled.div`
 
 const Error = styled.p`
   position: absolute;
-  margin-top: 2px;
+  margin-top: 45px;
   margin-left: 10px;
   font-size: 8pt;
   color: red;

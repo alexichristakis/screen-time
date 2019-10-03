@@ -62,10 +62,12 @@ const Modal = ({ onClick }) => (
           notifications that motivated it and the screen time categories which
           followed.
         </p>
+
         <Quote>
           “Seventy-nine percent of smartphone owners check their device within
           fifteen minutes of waking up every morning.” - Nir Eyal
         </Quote>
+
         <p>
           The amount of time we spend on our phones, and the amount of
           distraciton they cause is more than we realize. People may disagree

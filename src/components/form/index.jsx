@@ -113,20 +113,20 @@ class Form extends Component {
         <Spacer />
         <TextInput
           value={pickups}
-          label={"pickups/day"}
+          placeholder="0"
+          label="pickups/day"
+          errorString="please enter a positive integer"
           validation={numberValidate}
-          errorString={"please enter a number"}
           onChange={this.handleChangePickups}
-          placeholder={"0"}
         />
         <Spacer />
         <TextInput
           value={notifications}
-          label={"notifications/day"}
+          placeholder="0"
+          label="notifications/day"
+          errorString="please enter a positive integer"
           validation={numberValidate}
-          errorString={"please enter a number"}
           onChange={this.handleChangeNotifications}
-          placeholder={"0"}
         />
         <SubmitButton onClick={this.handleSubmit} error={error} />
       </Container>

@@ -31,7 +31,7 @@ export const Icon = styled.a`
 
 class Help extends Component {
   state = {
-    modal: true
+    modal: false
   };
 
   render() {

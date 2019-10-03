@@ -10,7 +10,7 @@ const Container = styled.div`
   pointer-events: box-none;
 `;
 
-const Icon = styled.a`
+export const Icon = styled.a`
   cursor: pointer;
   position: absolute;
   right: 30px;
@@ -31,7 +31,7 @@ const Icon = styled.a`
 
 class Help extends Component {
   state = {
-    modal: false
+    modal: true
   };
 
   render() {

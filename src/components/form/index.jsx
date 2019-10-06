@@ -2,10 +2,25 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import { timeValidate, numberValidate, timeStringToInt } from "../../lib/utils";
+import { categoryToColor } from "../../lib/constants";
 
 import SubmitButton from "./SubmitButton";
 import TextInput from "./TextInput";
 import Category from "./Category";
+
+const Label = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const Box = styled.div`
+  align-self: center;
+  margin-right: 10px;
+  background-color: ${props => categoryToColor[props.type]};
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+`;
 
 const Container = styled.div`
   position: absolute;
@@ -106,7 +121,12 @@ class Form extends Component {
         <TextInput
           value={pickups}
           placeholder="0"
-          label="pickups/day"
+          label={
+            <Label>
+              <Box type={"pickups"} />
+              pickups/day
+            </Label>
+          }
           errorString="please enter a positive integer"
           validation={numberValidate}
           onChange={this.handleChangePickups}
@@ -115,7 +135,12 @@ class Form extends Component {
         <TextInput
           value={notifications}
           placeholder="0"
-          label="notifications/day"
+          label={
+            <Label>
+              <Box type={"notifications"} />
+              notifications/day
+            </Label>
+          }
           errorString="please enter a positive integer"
           validation={numberValidate}
           onChange={this.handleChangeNotifications}

@@ -17,7 +17,8 @@ const box = (color = "#ccc") => ({
     display: "block",
     marginRight: 8,
     height: 10,
-    width: 10
+    width: 10,
+    borderRadius: 5
   }
 });
 

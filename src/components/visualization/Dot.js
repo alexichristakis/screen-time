@@ -13,8 +13,6 @@ export default p =>
     }
 
     compare = dot2 => {
-      const { mass } = dot2;
-
       let dist = Math.hypot(dot2.x - this.x, dot2.y - this.y);
 
       if (dist < 1) dist = 1;

@@ -1,10 +1,9 @@
 import React from "react";
-import chroma from "chroma-js";
 import styled from "styled-components";
 import Select from "react-select";
 
 import { timeValidate } from "../../lib/utils";
-import { colors, categoryToColor, options } from "../../lib/constants";
+import { categoryToColor, options } from "../../lib/constants";
 
 import TextInput from "./TextInput";
 
@@ -46,31 +45,11 @@ const colorStyles = {
     border: "solid white 1px"
   }),
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    const color = chroma(categoryToColor[data.value]);
     return {
       ...styles,
       backgroundColor: isFocused ? "rgba(130, 130, 130, 0.5)" : null,
-      //   backgroundColor: isDisabled
-      //     ? null
-      //     : isSelected
-      //     ? data.color
-      //     : isFocused
-      //     ? color.alpha(0.1).css()
-      //     : null
-      //   color: isDisabled
-      //     ? "#ccc"
-      //     : isSelected
-      //     ? chroma.contrast(color, "white") > 2
-      //       ? "white"
-      //       : "black"
-      //     : data.color,
       textAlign: "left",
       cursor: isDisabled ? "not-allowed" : "default"
-      //   ":active": {
-      //     ...styles[":active"],
-      //     backgroundColor:
-      //       !isDisabled && (isSelected ? data.color : color.alpha(0.3).css())
-      //   }
     };
   },
   indicatorSeparator: () => ({ display: "none" }),

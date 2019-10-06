@@ -1,7 +1,7 @@
 import isEqual from "lodash/isEqual";
 import _Session from "./Session";
 
-import { colorToCategory, options } from "../../lib/constants";
+import { colorToCategory } from "../../lib/constants";
 
 export default p => {
   const Session = _Session(p);
@@ -118,7 +118,7 @@ export default p => {
     if (tooltip.x && tooltip.y) {
       const type = colorToCategory[tooltip.type];
       let string;
-      if (type == "pickups" || type == "notifications") {
+      if (type === "pickups" || type === "notifications") {
         string = `${type.substring(0, type.length - 1)}`;
       } else {
         string = `${type} ${tooltip.value} minutes`;

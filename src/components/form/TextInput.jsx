@@ -27,6 +27,7 @@ const Input = styled.input`
   outline: none;
   padding-left: 5px;
   font-size: 12pt;
+  transition: all 250ms cubic-bezier(0.21, 0.94, 0.64, 0.99);
   &:hover {
     border-color: rgb(130, 130, 130);
   }

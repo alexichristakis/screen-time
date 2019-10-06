@@ -20,7 +20,8 @@ export const Icon = styled.a`
   border: solid white 1px;
   transition: all 250ms cubic-bezier(0.21, 0.94, 0.64, 0.99);
   &:hover {
-    transform: scale(1.2);
+    color: rgb(130, 130, 130);
+    border-color: rgb(130, 130, 130);
   }
 `;
 

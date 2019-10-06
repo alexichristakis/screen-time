@@ -76,12 +76,16 @@ class Form extends Component {
     const { onSubmit } = this.props;
 
     if (
-      Object.values(categories).every(
+      !Object.values(categories).every(
         ({ time, category }) => timeValidate(time) && category
-      ) &&
-      numberValidate(pickups) &&
-      numberValidate(notifications)
+      )
     ) {
+      this.setState({ error: "missing category or proper time formatting" });
+    } else if (!numberValidate(pickups)) {
+      this.setState({ error: "please fix pickups formatting" });
+    } else if (!numberValidate(notifications)) {
+      this.setState({ error: "please fix notifications formatting" });
+    } else {
       this.setState({ error: "" });
 
       const data = {
@@ -99,8 +103,6 @@ class Form extends Component {
       console.log(data);
 
       onSubmit(data);
-    } else {
-      this.setState({ error: "please correct form errors" });
     }
   };
 

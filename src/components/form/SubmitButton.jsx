@@ -31,6 +31,7 @@ const Button = styled.a`
 `;
 
 const Error = styled.p`
+  margin-left: 50%;
   font-size: 8pt;
   color: red;
 `;

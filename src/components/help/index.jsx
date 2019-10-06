@@ -13,8 +13,8 @@ const Container = styled.div`
 export const Icon = styled.a`
   cursor: pointer;
   position: absolute;
-  right: 30px;
-  bottom: 30px;
+  right: 20px;
+  bottom: 20px;
   font-size: 10pt;
   padding-top: 2px;
   color: white;
@@ -33,7 +33,7 @@ export const Icon = styled.a`
 
 class Help extends Component {
   state = {
-    modal: false
+    modal: true
   };
 
   render() {

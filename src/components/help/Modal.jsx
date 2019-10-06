@@ -12,11 +12,11 @@ const Container = styled.div`
 `;
 
 const Window = styled.div`
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 200px);
   max-width: 800px;
   background-color: black;
   border: solid 1px white;
-  margin: 100px auto;
+  margin: 100px auto 200px auto;
 `;
 
 const TopBar = styled.div`
@@ -33,13 +33,17 @@ const Close = styled.a`
 `;
 
 const Text = styled.div`
-  max-height: calc(100vh - 150px);
+  max-height: calc(100vh - 250px);
   padding: 0px 15px 10px 15px;
   line-height: 16pt;
   overflow-y: scroll;
 `;
 
 const Quote = styled.p`
+  /* font-size: 16pt; */
+  margin-left: 20px;
+  /* margin-right: 40px; */
+  /* font-style: italic; */
   font-weight: bold;
 `;
 
@@ -65,7 +69,7 @@ const Modal = ({ onClick }) => (
 
         <Quote>
           “Seventy-nine percent of smartphone owners check their device within
-          fifteen minutes of waking up every morning.” - Nir Eyal
+          fifteen minutes of waking up every morning.” (Eyal, 2014)
         </Quote>
 
         <p>
@@ -85,21 +89,81 @@ const Modal = ({ onClick }) => (
 
         <Quote>
           “Forming habits is imperative for the survival of many products.”
+          (Eyal, 2014)
         </Quote>
+
+        <p>
+          Most of our digital products depend upon continued user engagement, to
+          draw more revenue from ad impressions. They're incentivized to harness
+          as much of our attention as possible.
+        </p>
+
+        <p>
+          I think the most important aspect of our phone usage (which is often
+          under-discussed) is the way in which we’re distracted and interrupted.
+          Spending multiple hours a day on a device can be extremely productive,
+          and not detract from one’s attentiveness by way of overstimulating.
+          Obviously not all screen time is “bad”, and the breakdown by app
+          category is helpful in diagnosing how a user may fall on the spectrum
+          from meaningless time wasting (via social media, games, etc.) to
+          thoughtful content consumption (news reading, google searches, email
+          sending etc.). But at the same time, 3 hours of phone usage divided
+          across 200 pickups is less than a minute per phone session on average.
+          While it’s easy to feel good about 1.5 hours of “reading & reference”
+          — a category associated with news apps — when the average length of
+          each session is hardly enough to read a single article the meaning of
+          the time has to be reconsidered.
+        </p>
+
+        <p>
+          It's important to note that my algorithm to distribute minutes from
+          each category between pickups is random, and could easily misrepresent
+          what the user’s patterns actually are. Below are some other quotes and
+          excerpts that insired this project.
+        </p>
 
         <Quote>
           “Through consecutive Hook cycles, successful products reach their
           ultimate goal of unprompted user engagement, bringing users back
           repeatedly, without depending on costly advertising or aggressive
-          messaging.”
+          messaging.” (Eyal, 2014)
         </Quote>
-
-        <p>As a result,</p>
 
         <Quote>
           “A 2011 university study suggested people check their phones
           thirty-four times per day. However, industry insiders believe that
-          number is closer to an astounding 150 daily sessions.”
+          number is closer to an astounding 150 daily sessions.” (Eyal, 2014)
+        </Quote>
+
+        <Quote>
+          “Furthermore, the overall time spent on Facebook increased by 566%
+          from 2007 to 2008.” (Kuss & Griffiths, 2011)
+        </Quote>
+
+        <Quote>
+          “Fully one-third of Americans say they would rather give up sex than
+          lose their cell phones.” (Eyal, 2014)
+        </Quote>
+
+        <Quote>
+          “For these young people, new digital technologies are primary
+          mediators of human-to-human connections. They have created a 24/7
+          network that blends the human with the technological to a degree that
+          people have never before experienced, and it is transforming human
+          relationships in fundamental ways.” (Palfrey & Gasser, 2016)
+        </Quote>
+
+        <Quote>
+          “In 2015, the average US teenage spent about nine hours per day using
+          various digital devices, according to a study by Common Sense
+          Media.”(Palfrey & Gasser, 2016)
+        </Quote>
+
+        <Quote>
+          “The mass appeal of social networks on the Internet could potentially
+          be a cause for concern, particularly when attending to the gradually
+          increasing amounts of time people spend online.” (Kuss & Griffiths,
+          2011)
         </Quote>
       </Text>
     </Window>

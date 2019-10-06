@@ -11,8 +11,8 @@ const Container = styled.div`
 export const Icon = styled.a`
   cursor: pointer;
   position: absolute;
-  left: 40px;
-  bottom: 35px;
+  left: 20px;
+  bottom: 20px;
   font-size: 10pt;
   padding: 5px 10px 7px 10px;
   color: white;

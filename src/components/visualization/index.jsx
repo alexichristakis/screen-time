@@ -122,7 +122,7 @@ export default p => {
       if (type === "pickups" || type === "notifications") {
         string = `${type.substring(0, type.length - 1)}`;
       } else {
-        string = `${type} ${tooltip.value / 3} minutes`;
+        string = `${tooltip.value / 3} minutes of ${type}`;
       }
 
       const metrics = p.canvas.getContext("2d").measureText(string);

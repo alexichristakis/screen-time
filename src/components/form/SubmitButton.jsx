@@ -2,12 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  /* position: absolute; */
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  /* left: 213px; */
-  margin-top: 50px;
+  margin-top: 45px;
   width: 50vw;
   max-width: 500px;
 `;

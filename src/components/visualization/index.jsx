@@ -20,6 +20,7 @@ export default p => {
   };
 
   p.myCustomRedrawAccordingToNewPropsHandler = props => {
+    // processData(props.data);
     if (!isEqual(props.data, data)) {
       data = props.data;
       processData(data);
@@ -72,7 +73,7 @@ export default p => {
     sessions = [];
     drawnSessions = [];
 
-    // pickups = 1;
+    // pickups = 10;
     // notifications = 3;
     // categories = {
     //   social: 10,

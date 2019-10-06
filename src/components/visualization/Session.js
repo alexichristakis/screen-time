@@ -34,8 +34,6 @@ export default p => {
       y: p.random(200, height - 200)
     });
 
-    static overlap(s1, s2) {}
-
     display = (mouseEntered, mouseLeft) => {
       if (!this.finished) {
         let changes = [];
@@ -62,7 +60,7 @@ export default p => {
           });
         });
 
-        if (Math.max(...changes) <= 0.1) {
+        if (Math.max(...changes) <= 0.005) {
           this.finished = true;
         }
       }

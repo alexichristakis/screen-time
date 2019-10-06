@@ -39,7 +39,7 @@ export default p => {
 
     static overlap(s1, s2) {}
 
-    display = () => {
+    display = (mouseEntered, mouseLeft) => {
       this.dots.forEach((dot1, i) => {
         let accelerationX = 0,
           accelerationY = 0;
@@ -61,7 +61,7 @@ export default p => {
       });
 
       this.dots.forEach((dot, i) => {
-        dot.display(p);
+        dot.display(mouseEntered, mouseLeft);
       });
     };
   };

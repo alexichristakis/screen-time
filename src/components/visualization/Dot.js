@@ -8,6 +8,7 @@ export default p =>
       this.r = r;
       this.mass = r / 2000;
 
+      this.tooltipOpen = false;
       this.animation = 0;
     }
 
@@ -22,7 +23,18 @@ export default p =>
       return [force * (dot2.x - this.x), force * (dot2.y - this.y)];
     };
 
-    display = () => {
+    display = (mouseEntered, mouseLeft) => {
+      const x = p.mouseX;
+      const y = p.mouseY;
+
+      if (Math.abs(x - this.x) < this.r && Math.abs(y - this.y) < this.r) {
+        this.tooltipOpen = true;
+        mouseEntered({ x, y, type: this.color, value: this.r });
+      } else if (this.tooltipOpen) {
+        this.tooltipOpen = false;
+        mouseLeft();
+      }
+
       p.fill(this.color);
       p.stroke(this.color);
       p.ellipse(this.x, this.y, this.animation * 2, this.animation * 2);

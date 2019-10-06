@@ -1,4 +1,7 @@
+import isEqual from "lodash/isEqual";
 import _Session from "./Session";
+
+import { colorToCategory, options } from "../../lib/constants";
 
 export default p => {
   const Session = _Session(p);
@@ -8,14 +11,18 @@ export default p => {
   let data = {};
   let sessions = [];
   let drawnSessions = [];
+  let tooltip = { x: 0, y: 0, size: 0, type: "" };
   let width, height;
 
   p.setup = () => {
     p.createCanvas(width, height);
+    p.textSize(12);
   };
 
   p.myCustomRedrawAccordingToNewPropsHandler = props => {
-    if (props.data) {
+    // processData(props.data);
+
+    if (!isEqual(props.data, data)) {
       data = props.data;
       processData(data);
     }
@@ -26,6 +33,14 @@ export default p => {
 
       p.resizeCanvas(width, height);
     }
+  };
+
+  const mouseEntered = tooltipData => {
+    tooltip = tooltipData;
+  };
+
+  const mouseLeft = () => {
+    tooltip = { x: 0, y: 0 };
   };
 
   const shuffle = array => {
@@ -94,9 +109,33 @@ export default p => {
       updateDrawnSessions();
     }
 
-    if (drawnSessions.length)
+    if (drawnSessions.length) {
       drawnSessions.forEach(session => {
-        session.display();
+        session.display(mouseEntered, mouseLeft);
       });
+    }
+
+    if (tooltip.x && tooltip.y) {
+      const type = colorToCategory[tooltip.type];
+      let string;
+      if (type == "pickups" || type == "notifications") {
+        string = `${type.substring(0, type.length - 1)}`;
+      } else {
+        string = `${type} ${tooltip.value} minutes`;
+      }
+
+      const metrics = p.canvas.getContext("2d").measureText(string);
+
+      p.strokeWeight(1);
+      p.stroke(255);
+      p.fill(0);
+
+      p.rect(tooltip.x + 10, tooltip.y - 10, metrics.width + 20, 35);
+
+      p.strokeWeight(0);
+      p.fill(255);
+
+      p.text(string, tooltip.x + 20, tooltip.y + 10);
+    }
   };
 };

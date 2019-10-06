@@ -90,6 +90,8 @@ class Form extends Component {
         );
       });
 
+      console.log(data);
+
       onSubmit(data);
     } else {
       this.setState({ error: "please correct form errors" });

@@ -1,9 +1,14 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 import P5 from "react-p5-wrapper";
 
 import Form from "./components/form";
 import sketch from "./components/visualization";
 import Help from "./components/help";
+
+const Container = styled.div`
+  background-color: black;
+`;
 
 class App extends Component {
   state = {
@@ -43,11 +48,12 @@ class App extends Component {
     } = this.state;
 
     return (
-      <div className="App">
+      <Container>
         <Form onSubmit={this.handleSubmit} />
+
         <P5 width={width} height={height} data={data} sketch={sketch} />
         <Help />
-      </div>
+      </Container>
     );
   }
 }

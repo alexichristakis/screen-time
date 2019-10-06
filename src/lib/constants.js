@@ -1,3 +1,5 @@
+import invert from "lodash/invert";
+
 export const colors = {
   orange: "#FA6400",
   lightblue: "#64D2FF",
@@ -34,3 +36,5 @@ export const categoryToColor = {
   health: colors.pink,
   pickups: colors.lightblue
 };
+
+export const colorToCategory = invert(categoryToColor);

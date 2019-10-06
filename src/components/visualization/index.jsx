@@ -20,8 +20,6 @@ export default p => {
   };
 
   p.myCustomRedrawAccordingToNewPropsHandler = props => {
-    // processData(props.data);
-
     if (!isEqual(props.data, data)) {
       data = props.data;
       processData(data);
@@ -74,12 +72,12 @@ export default p => {
     sessions = [];
     drawnSessions = [];
 
-    // pickups = 100;
-    // notifications = 100;
+    // pickups = 1;
+    // notifications = 3;
     // categories = {
-    //   social: 65,
-    //   entertainment: 65,
-    //   productivity: 65
+    //   social: 10,
+    //   entertainment: 12,
+    //   productivity: 14
     // };
 
     if (pickups) {
@@ -95,6 +93,8 @@ export default p => {
           category => (formatted[category] = distributed[category][i])
         );
 
+        // console.log(formatted);
+
         sessions.push(
           new Session(width, height, notifications / pickups, formatted)
         );
@@ -105,7 +105,7 @@ export default p => {
   p.draw = () => {
     p.background(0);
 
-    if (!(p.frameCount % 30) && sessions.length) {
+    if (!(p.frameCount % 15) && sessions.length) {
       updateDrawnSessions();
     }
 
@@ -121,7 +121,7 @@ export default p => {
       if (type === "pickups" || type === "notifications") {
         string = `${type.substring(0, type.length - 1)}`;
       } else {
-        string = `${type} ${tooltip.value} minutes`;
+        string = `${type} ${tooltip.value / 3} minutes`;
       }
 
       const metrics = p.canvas.getContext("2d").measureText(string);
@@ -130,7 +130,7 @@ export default p => {
       p.stroke(255);
       p.fill(0);
 
-      p.rect(tooltip.x + 10, tooltip.y - 10, metrics.width + 20, 35);
+      p.rect(tooltip.x + 10, tooltip.y - 10, metrics.width + 20, 32);
 
       p.strokeWeight(0);
       p.fill(255);

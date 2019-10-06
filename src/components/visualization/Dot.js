@@ -17,7 +17,7 @@ export default p =>
 
       if (dist < 1) dist = 1;
 
-      let force = ((dist - 30) * this.mass) / dist;
+      let force = ((dist - Math.max(35, dot2.r + this.r)) * this.mass) / dist;
       return [force * (dot2.x - this.x), force * (dot2.y - this.y)];
     };
 

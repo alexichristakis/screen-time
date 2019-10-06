@@ -4,6 +4,7 @@ import P5 from "react-p5-wrapper";
 
 import Form from "./components/form";
 import sketch from "./components/visualization";
+import Clear from "./components/Clear";
 import Help from "./components/help";
 
 const Container = styled.div`
@@ -53,6 +54,7 @@ class App extends Component {
 
         <P5 width={width} height={height} data={data} sketch={sketch} />
         <Help />
+        <Clear data={data} onClick={() => this.setState({ data: {} })} />
       </Container>
     );
   }

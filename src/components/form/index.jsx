@@ -9,6 +9,7 @@ import TextInput from "./TextInput";
 import Category from "./Category";
 
 const Label = styled.div`
+  margin-left: 10px;
   display: flex;
   flex-direction: row;
 `;

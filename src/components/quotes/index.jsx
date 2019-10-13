@@ -15,6 +15,7 @@ const Container = styled.div`
 const Quote = styled.p`
   color: white;
   margin-right: 30px;
+  white-space: nowrap;
 `;
 
 const Gradient = styled.img.attrs({ src: gradient, alt: "" })`
@@ -55,7 +56,7 @@ const quotes = [
 const Quotes = () => {
   return (
     <Container>
-      <Ticker offset={"100%"}>
+      <Ticker offset="100%">
         {({ index }) => <Quote>{quotes[(index % quotes.length) - 1]}</Quote>}
       </Ticker>
       <Gradient />

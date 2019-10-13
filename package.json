@@ -10,6 +10,7 @@
     "react-p5-wrapper": "^2.0.0",
     "react-scripts": "3.1.2",
     "react-select": "^3.0.5",
+    "react-ticker": "^1.2.1",
     "styled-components": "^4.4.0"
   },
   "scripts": {

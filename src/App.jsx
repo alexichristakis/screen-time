@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import P5 from "react-p5-wrapper";
 
-import Form from "./components/form";
 import sketch from "./components/visualization";
+import Form from "./components/form";
 import Clear from "./components/Clear";
 import Help from "./components/help";
+import Quotes from "./components/quotes";
 
 const Container = styled.div`
   background-color: black;
@@ -51,8 +52,8 @@ class App extends Component {
     return (
       <Container>
         <Form onSubmit={this.handleSubmit} />
-
         <P5 width={width} height={height} data={data} sketch={sketch} />
+        {Object.entries(data).length && <Quotes />}
         <Help />
         <Clear data={data} onClick={() => this.setState({ data: {} })} />
       </Container>

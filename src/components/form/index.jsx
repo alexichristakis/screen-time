@@ -100,8 +100,6 @@ class Form extends Component {
         );
       });
 
-      console.log(data);
-
       onSubmit(data);
     }
   };

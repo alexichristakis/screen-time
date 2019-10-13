@@ -30,8 +30,8 @@ export default p => {
     }
 
     randomPoint = (width, height) => ({
-      x: p.random(200, width - 200),
-      y: p.random(200, height - 200)
+      x: p.random(100, width - 100),
+      y: p.random(100, height - 100)
     });
 
     display = (mouseEntered, mouseLeft) => {
